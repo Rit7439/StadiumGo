@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══ Primary SEO ═══ -->
+  <title>StadiumGo — AI-Powered Smart Stadium Experience System</title>
+  <meta name="description" content="StadiumGo is an AI-powered smart stadium OS featuring real-time crowd intelligence, NFC ticketing, venue operations, and a 4-layer coordination core. Trusted by 250K+ fans." />
+  <meta name="keywords" content="smart stadium, AI crowd control, venue management, NFC ticketing, fan experience, stadium OS, crowd intelligence" />
+  <meta name="author" content="StadiumGo Inc." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://stadiumgo.app/" />
+
+  <!-- ═══ Security ═══ -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- ═══ Open Graph / Social ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="StadiumGo — Smart Stadium OS" />
+  <meta property="og:description" content="AI-powered stadium management: real-time crowd intelligence, smart ticketing, and unified venue control." />
+  <meta property="og:url" content="https://stadiumgo.app/" />
+  <meta property="og:site_name" content="StadiumGo" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ═══ Twitter Card ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="StadiumGo — Smart Stadium OS" />
+  <meta name="twitter:description" content="AI-powered stadium management with real-time crowd intelligence and smart fan experience tools." />
+
+  <!-- ═══ PWA / Theme ═══ -->
+  <meta name="theme-color" content="#050b18" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="application-name" content="StadiumGo" />
+
+  <!-- ═══ Structured Data (JSON-LD) ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "StadiumGo",
+    "description": "AI-powered smart stadium experience platform with crowd intelligence, NFC ticketing, and real-time venue operations.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://stadiumgo.app/",
+    "author": { "@type": "Organization", "name": "StadiumGo Inc." }
+  }
+  </script>
+
+  <!-- ═══ Google Services: Fonts (preconnect + stylesheet) ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" /></noscript>
+
+  <!-- ═══ Styles ═══ -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Skip to main content (Accessibility) -->
+  <a href="#main-content" class="skip-to-main" tabindex="0">Skip to main content</a>
+
+  <!-- Particle canvas background -->
+  <canvas id="particle-canvas" role="presentation" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="logo" aria-label="StadiumGo — Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="14" cy="14" r="13" stroke="url(#logoGrad)" stroke-width="2"/>
+            <path d="M14 4 L20 10 L20 18 L14 24 L8 18 L8 10 Z" fill="url(#logoGrad)" opacity="0.8"/>
+            <circle cx="14" cy="14" r="3" fill="white"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28">
+                <stop offset="0%" stop-color="#00d4ff"/>
+                <stop offset="100%" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Stadium<span class="logo-accent">Go</span></span>
+      </a>
+      <div class="nav-links" role="list">
+        <a href="#attendees" class="nav-link" role="listitem" data-section="attendees" aria-label="Fan UI — Layer 1">1. Fan UI</a>
+        <a href="#intelligence" class="nav-link" role="listitem" data-section="intelligence" aria-label="Crowd AI — Layer 2">2. Crowd AI</a>
+        <a href="#operations" class="nav-link" role="listitem" data-section="operations" aria-label="Venue Ops — Layer 3">3. Venue Ops</a>
+        <a href="#coordination" class="nav-link" role="listitem" data-section="coordination" aria-label="Command Core — Layer 4">4. Core</a>
+      </div>
+      <div class="nav-status" aria-live="polite" aria-label="System status: Live">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text">Live</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ Main Content ═══ -->
+  <main id="main-content">
+
+  <!-- Hero Section -->
+  <section id="hero" aria-label="Hero — StadiumGo Smart Stadium OS">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        AI-Powered · Real-Time · 4-Layer Architecture
+      </div>
+      <h1 class="hero-title">
+        The Ultimate<br/><span class="gradient-text" id="typed-headline"></span>
+      </h1>
+      <p class="hero-subtitle">
+        A fully integrated platform combining intuitive fan apps, AI crowd control, <br/>automated venue operations, and a real-time command center.
+      </p>
+      <div class="hero-cta">
+        <button id="btn-explore" class="btn-primary" onclick="scrollToSection('attendees')" aria-label="Explore the StadiumGo system">
+          Explore the System
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button id="btn-demo" class="btn-ghost" onclick="scrollToSection('coordination')" aria-label="View the live command center demo">View Live Demo</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-number" data-target="98">0</div><span class="stat-unit">%</span>
+          <div class="stat-label">Entry Accuracy</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="3.2">0</div><span class="stat-unit">s</span>
+          <div class="stat-label">Avg Wait Predict</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="250">0</div><span class="stat-unit">K</span>
+          <div class="stat-label">Fans Managed</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="12">0</div><span class="stat-unit">ms</span>
+          <div class="stat-label">Alert Latency</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stadium-ring ring-1"></div>
+      <div class="stadium-ring ring-2"></div>
+      <div class="stadium-ring ring-3"></div>
+      <div class="hero-globe">
+        <div class="globe-inner">
+          <canvas id="globe-canvas" width="280" height="280"></canvas>
+        </div>
+        <div class="globe-orbits">
+          <div class="orbit orbit-1"><div class="orbit-dot dot-attendee" title="Attendees"></div></div>
+          <div class="orbit orbit-2"><div class="orbit-dot dot-intel" title="Intelligence"></div></div>
+          <div class="orbit orbit-3"><div class="orbit-dot dot-ops" title="Operations"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layer Architecture Overview -->
+  <section id="architecture">
+    <div class="section-inner">
+      <div class="section-label">System Architecture</div>
+      <h2 class="section-title">Four OS Core Integrations</h2>
+      <p class="section-sub">A living, breathing data pipeline flowing directly between fans, ops, and automated AI command.</p>
+      <div class="arch-diagram">
+        <div class="arch-layer layer-attendee" onclick="scrollToSection('attendees')"
+             role="button" tabindex="0" aria-label="Go to Attendee Layer section"
+             onkeydown="if(event.key==='Enter'||event.key===' ')scrollToSection('attendees')">
+          <div class="layer-icon">👥</div>
+          <div class="layer-info">
+            <div class="layer-name">1. Fan UI</div>
+            <div class="layer-desc">QR/NFC · Wayfinding · Alerts</div>
+          </div>
+          <div class="layer-badge l1">UI</div>
+        </div>
+        <div class="arch-arrow"><div class="arrow-flow"></div></div>
+        <div class="arch-layer layer-intel" onclick="scrollToSection('intelligence')"
+             role="button" tabindex="0" aria-label="Go to Crowd Intelligence Layer section"
+             onkeydown="if(event.key==='Enter'||event.key===' ')scrollToSection('intelligence')">
+          <div class="layer-icon">🧠</div>
+          <div class="layer-info">
+            <div class="layer-name">2. Crowd AI</div>
+            <div class="layer-desc">Sensors · Density Maps · ML</div>
+          </div>
+          <div class="layer-badge l2">AI</div>
+        </div>
+        <div class="arch-arrow"><div class="arrow-flow"></div></div>
+        <div class="arch-layer layer-ops" onclick="scrollToSection('operations')"
+             role="button" tabindex="0" aria-label="Go to Venue Operations Layer section"
+             onkeydown="if(event.key==='Enter'||event.key===' ')scrollToSection('operations')">
+          <div class="layer-icon">🏟️</div>
+          <div class="layer-info">
+            <div class="layer-name">3. Venue Ops</div>
+            <div class="layer-desc">Staff · Concessions · Gates</div>
+          </div>
+          <div class="layer-badge l3">Ops</div>
+        </div>
+        <div class="arch-arrow"><div class="arrow-flow"></div></div>
+        <div class="arch-layer layer-coord" onclick="scrollToSection('coordination')"
+             role="button" tabindex="0" aria-label="Go to Coordination Core Layer section"
+             onkeydown="if(event.key==='Enter'||event.key===' ')scrollToSection('coordination')">
+          <div class="layer-icon">⚡</div>
+          <div class="layer-info">
+            <div class="layer-name">4. Command Core</div>
+            <div class="layer-desc">Unified Real-time Pipelines</div>
+          </div>
+          <div class="layer-badge l4">Core</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== LAYER 1: ATTENDEES ========================== -->
+  <section id="attendees" class="layer-section layer-attendees-section">
+    <div class="section-inner">
+      <div class="layer-header">
+        <div class="layer-tag tag-attendee">1 · Fan Experience</div>
+        <h2 class="section-title">Seamless Navigation and<br/><span class="gradient-text-cyan">Hyper-Personalized Fan Tools</span></h2>
+        <p class="section-sub">We remove friction from the fan journey. Live wayfinding, predictive queue avoidance, and smart ticketing accessible from a single pane of glass.</p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Smart Ticketing -->
+        <div class="feature-card card-wide">
+          <div class="card-glow glow-cyan"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 12H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="7" cy="12" r="1" fill="currentColor"/></svg>
+            </div>
+            <h3>Smart Ticketing</h3>
+          </div>
+          <p class="feature-desc">QR and NFC entry with real-time validation. Seat wayfinding guides fans directly to their row.</p>
+          <div class="ticket-demo">
+            <div class="ticket-scan-area" id="qr-scan-demo">
+              <div class="qr-grid">
+                <div class="qr-cell dark"></div><div class="qr-cell dark"></div><div class="qr-cell light"></div><div class="qr-cell dark"></div><div class="qr-cell dark"></div>
+                <div class="qr-cell dark"></div><div class="qr-cell light"></div><div class="qr-cell dark"></div><div class="qr-cell light"></div><div class="qr-cell dark"></div>
+                <div class="qr-cell light"></div><div class="qr-cell dark"></div><div class="qr-cell dark"></div><div class="qr-cell dark"></div><div class="qr-cell light"></div>
+                <div class="qr-cell dark"></div><div class="qr-cell light"></div><div class="qr-cell dark"></div><div class="qr-cell dark"></div><div class="qr-cell dark"></div>
+                <div class="qr-cell dark"></div><div class="qr-cell dark"></div><div class="qr-cell light"></div><div class="qr-cell dark"></div><div class="qr-cell dark"></div>
+              </div>
+              <div class="scan-line" id="scan-line"></div>
+              <div class="scan-corners">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+              </div>
+            </div>
+            <div class="ticket-info">
+              <div class="ticket-status" id="ticket-status">
+                <div class="status-indicator validating">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/></svg>
+                  <span>Validating...</span>
+                </div>
+              </div>
+              <div class="ticket-detail"><span class="td-label">Gate</span><span class="td-value">B3 — NW Entry</span></div>
+              <div class="ticket-detail"><span class="td-label">Seat</span><span class="td-value">Section 114 · Row F · 22</span></div>
+              <div class="ticket-detail"><span class="td-label">Tech</span><span class="td-value">NFC + QR Fallback</span></div>
+              <div class="wayfinding-bar">
+                <div class="wf-label">Wayfinding Active</div>
+                <div class="wf-route">Gate B3 → Concourse 1 → Sec 114</div>
+                <div class="wf-steps">
+                  <div class="wf-step done">●</div>
+                  <div class="wf-line done"></div>
+                  <div class="wf-step active">●</div>
+                  <div class="wf-line"></div>
+                  <div class="wf-step">●</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="ctag">QR Entry</span><span class="ctag">NFC Tap</span><span class="ctag">AR Wayfinding</span><span class="ctag">Accessible Routing</span>
+          </div>
+        </div>
+
+        <!-- Mobile Companion -->
+        <div class="feature-card">
+          <div class="card-glow glow-violet"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="18" r="1" fill="currentColor"/><path d="M9 6H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Mobile Companion</h3>
+          </div>
+          <p class="feature-desc">Live interactive stadium map, real-time wait times, and in-app food ordering — all in one app.</p>
+          <div class="mobile-demo">
+            <div class="map-miniature">
+              <div class="map-zones">
+                <div class="mz north"></div>
+                <div class="mz east"></div>
+                <div class="mz south"></div>
+                <div class="mz west"></div>
+                <div class="mz center"></div>
+                <div class="map-user-pin">📍</div>
+              </div>
+              <div class="heat-overlay">
+                <div class="heat-blob hb1"></div>
+                <div class="heat-blob hb2"></div>
+                <div class="heat-blob hb3"></div>
+              </div>
+            </div>
+            <div class="wait-times">
+              <div class="wt-header">⏱ Live Wait Times</div>
+              <div class="wait-row">
+                <span class="wr-name">Gate A1</span>
+                <div class="wait-bar-wrap"><div class="wait-bar wb-low" style="width:20%"></div></div>
+                <span class="wr-time low">2 min</span>
+              </div>
+              <div class="wait-row">
+                <span class="wr-name">Burger Stand</span>
+                <div class="wait-bar-wrap"><div class="wait-bar wb-med" style="width:55%"></div></div>
+                <span class="wr-time med">7 min</span>
+              </div>
+              <div class="wait-row">
+                <span class="wr-name">Restroom C</span>
+                <div class="wait-bar-wrap"><div class="wait-bar wb-high" style="width:80%"></div></div>
+                <span class="wr-time high">12 min</span>
+              </div>
+              <div class="wait-row">
+                <span class="wr-name">Gate B3</span>
+                <div class="wait-bar-wrap"><div class="wait-bar wb-low" style="width:15%"></div></div>
+                <span class="wr-time low">1 min</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="ctag">Live Map</span><span class="ctag">Food Ordering</span><span class="ctag">Wait Times</span>
+          </div>
+        </div>
+
+        <!-- Personalised Alerts -->
+        <div class="feature-card card-full">
+          <div class="card-glow glow-amber"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-amber">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" fill="currentColor" opacity="0.7"/></svg>
+            </div>
+            <h3>Personalised Alerts</h3>
+          </div>
+          <p class="feature-desc">AI-driven push notifications tailored to your seat, preferences, and real-time crowd conditions.</p>
+          <div class="alerts-demo" id="alerts-demo">
+            <div class="alert-item alert-crowd" id="alert-1">
+              <div class="alert-icon">🚶</div>
+              <div class="alert-content">
+                <div class="alert-title">Crowd Alert</div>
+                <div class="alert-body">Section 114 area getting dense — use Exit E for faster exit.</div>
+                <div class="alert-time">Just now</div>
+              </div>
+              <div class="alert-severity high"></div>
+            </div>
+            <div class="alert-item alert-offer" id="alert-2">
+              <div class="alert-icon">🍕</div>
+              <div class="alert-content">
+                <div class="alert-title">Exclusive Offer</div>
+                <div class="alert-body">20% off Pizza Palace — only 3 ahead in queue!</div>
+                <div class="alert-time">2 min ago</div>
+              </div>
+              <div class="alert-severity offer"></div>
+            </div>
+            <div class="alert-item alert-exit" id="alert-3">
+              <div class="alert-icon">🚪</div>
+              <div class="alert-content">
+                <div class="alert-title">Smart Exit</div>
+                <div class="alert-body">Leave now via Gate B3 — avoid the post-game rush. ETA: 4 min to car.</div>
+                <div class="alert-time">5 min ago</div>
+              </div>
+              <div class="alert-severity med"></div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="ctag">Push Notifications</span><span class="ctag">AI Personalised</span><span class="ctag">Exit Routing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== LAYER 2: CROWD INTELLIGENCE ========================== -->
+  <section id="intelligence" class="layer-section layer-intel-section">
+    <div class="section-inner">
+      <div class="layer-header">
+        <div class="layer-tag tag-intel">2 · Crowd AI</div>
+        <h2 class="section-title">Sensors + AI Making Sense<br/><span class="gradient-text-violet">of Every Movement</span></h2>
+        <p class="section-sub">A dense network of cameras and IoT sensors feeds real-time data into ML models that predict and prevent crowd surges before they happen.</p>
+      </div>
+
+      <div class="intel-grid">
+        <!-- Heatmap -->
+        <div class="feature-card card-heatmap">
+          <div class="card-glow glow-red"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-red">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 3H10V10H3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3H21V10H14Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3 14H10V21H3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 14H21V21H14Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Live Density Heatmap</h3>
+            <div class="live-chip">● LIVE</div>
+          </div>
+          <p class="feature-desc">Per-zone heatmaps updated every 500ms from camera arrays and pressure sensors on concourse floors.</p>
+          <div class="heatmap-container">
+            <canvas id="heatmap-canvas" width="420" height="220"></canvas>
+            <div class="heatmap-legend">
+              <div class="legend-bar"></div>
+              <div class="legend-labels">
+                <span>Low</span><span>Med</span><span>High</span><span>Critical</span>
+              </div>
+            </div>
+            <div class="heatmap-zones-overlay">
+              <div class="hz-label" style="top:15%;left:20%">North Stand</div>
+              <div class="hz-label" style="top:15%;left:67%">VIP Box</div>
+              <div class="hz-label" style="top:58%;left:20%">Concourse A</div>
+              <div class="hz-label" style="top:58%;left:63%">Concourse B</div>
+            </div>
+          </div>
+          <div class="density-stats">
+            <div class="ds-item"><div class="ds-zone">North</div><div class="ds-bar"><div class="ds-fill fill-crit" style="width:85%"></div></div><div class="ds-pct crit">85%</div></div>
+            <div class="ds-item"><div class="ds-zone">VIP Box</div><div class="ds-bar"><div class="ds-fill fill-med" style="width:45%"></div></div><div class="ds-pct med">45%</div></div>
+            <div class="ds-item"><div class="ds-zone">Conc A</div><div class="ds-bar"><div class="ds-fill fill-high" style="width:72%"></div></div><div class="ds-pct high">72%</div></div>
+            <div class="ds-item"><div class="ds-zone">Conc B</div><div class="ds-bar"><div class="ds-fill fill-low" style="width:28%"></div></div><div class="ds-pct low">28%</div></div>
+          </div>
+        </div>
+
+        <!-- Predictive Routing -->
+        <div class="feature-card">
+          <div class="card-glow glow-violet"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 8V12L12 18L20 12V8L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 18V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Predictive ML Routing</h3>
+          </div>
+          <p class="feature-desc">LSTM-based models ingest historical and real-time crowd data to reroute fans <em>before</em> surges happen.</p>
+          <div class="routing-visual">
+            <div class="route-map">
+              <svg width="100%" height="160" viewBox="0 0 300 160">
+                <!-- Nodes -->
+                <circle cx="30" cy="80" r="12" class="rnode entry" id="rn-entry"/>
+                <circle cx="100" cy="40" r="10" class="rnode concourse" id="rn-c1"/>
+                <circle cx="100" cy="120" r="10" class="rnode concourse" id="rn-c2"/>
+                <circle cx="180" cy="30" r="10" class="rnode zone" id="rn-z1"/>
+                <circle cx="180" cy="80" r="10" class="rnode zone alt" id="rn-z2"/>
+                <circle cx="180" cy="130" r="10" class="rnode zone" id="rn-z3"/>
+                <circle cx="270" cy="80" r="12" class="rnode destination" id="rn-dest"/>
+                <!-- Paths -->
+                <path d="M42 80 Q70 40 88 40" class="rpath rpath-blocked" id="rp1"/>
+                <path d="M42 80 Q70 120 88 120" class="rpath rpath-active" id="rp2"/>
+                <path d="M110 40 Q140 30 170 30" class="rpath rpath-blocked"/>
+                <path d="M110 120 Q140 80 170 80" class="rpath rpath-active"/>
+                <path d="M110 120 Q140 130 170 130" class="rpath"/>
+                <path d="M190 80 Q230 80 258 80" class="rpath rpath-active"/>
+                <path d="M190 130 Q230 110 258 82" class="rpath"/>
+                <!-- Labels -->
+                <text x="30" y="104" class="rnode-label">Entry</text>
+                <text x="83" y="16" class="rnode-label">C1</text>
+                <text x="83" y="136" class="rnode-label">C2</text>
+                <text x="173" y="13" class="rnode-label">Z1</text>
+                <text x="173" y="58" class="rnode-label">Z2*</text>
+                <text x="173" y="148" class="rnode-label">Z3</text>
+                <text x="255" y="104" class="rnode-label">Seat</text>
+                <!-- Surge label -->
+                <rect x="72" y="20" width="48" height="16" rx="3" fill="#ef444433"/>
+                <text x="96" y="32" text-anchor="middle" font-size="9" fill="#f87171">⚠ Surge</text>
+                <!-- Reroute label -->
+                <rect x="72" y="103" width="52" height="16" rx="3" fill="#10b98133"/>
+                <text x="98" y="115" text-anchor="middle" font-size="9" fill="#34d399">✓ Reroute</text>
+              </svg>
+            </div>
+            <div class="routing-metrics">
+              <div class="rm-item"><div class="rm-label">Prediction Lead</div><div class="rm-val">4.8 min ahead</div></div>
+              <div class="rm-item"><div class="rm-label">Routes Recalculated</div><div class="rm-val" id="routes-count">1,284</div></div>
+              <div class="rm-item"><div class="rm-label">Model Accuracy</div><div class="rm-val">97.3%</div></div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="ctag">LSTM Models</span><span class="ctag">Pre-surge</span><span class="ctag">Graph Pathfinding</span>
+          </div>
+        </div>
+
+        <!-- Queue Estimation -->
+        <div class="feature-card">
+          <div class="card-glow glow-cyan"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Queue Estimation Engine</h3>
+          </div>
+          <p class="feature-desc">Per-minute wait forecasts for every concession, gate, and restroom. Computer vision counts queue depth.</p>
+          <div class="queue-grid" id="queue-grid">
+            <div class="queue-card">
+              <div class="qc-name">Gate A1</div>
+              <div class="qc-wait" id="q-gate-a1">2:10</div>
+              <div class="qc-bar-wrap"><div class="qc-bar bar-green" style="width:18%"></div></div>
+              <div class="qc-type">Entry</div>
+            </div>
+            <div class="queue-card">
+              <div class="qc-name">Gate B3</div>
+              <div class="qc-wait" id="q-gate-b3">0:45</div>
+              <div class="qc-bar-wrap"><div class="qc-bar bar-green" style="width:8%"></div></div>
+              <div class="qc-type">Entry</div>
+            </div>
+            <div class="queue-card">
+              <div class="qc-name">Burger Co.</div>
+              <div class="qc-wait" id="q-burger">7:30</div>
+              <div class="qc-bar-wrap"><div class="qc-bar bar-orange" style="width:62%"></div></div>
+              <div class="qc-type">Concession</div>
+            </div>
+            <div class="queue-card">
+              <div class="qc-name">Pizza Palace</div>
+              <div class="qc-wait" id="q-pizza">3:15</div>
+              <div class="qc-bar-wrap"><div class="qc-bar bar-yellow" style="width:30%"></div></div>
+              <div class="qc-type">Concession</div>
+            </div>
+            <div class="queue-card alert-queue">
+              <div class="qc-name">Restroom C2</div>
+              <div class="qc-wait" id="q-rest-c2">11:00</div>
+              <div class="qc-bar-wrap"><div class="qc-bar bar-red" style="width:91%"></div></div>
+              <div class="qc-type">⚠ Restroom</div>
+            </div>
+            <div class="queue-card">
+              <div class="qc-name">Restroom A1</div>
+              <div class="qc-wait" id="q-rest-a1">4:20</div>
+              <div class="qc-bar-wrap"><div class="qc-bar bar-yellow" style="width:38%"></div></div>
+              <div class="qc-type">Restroom</div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="ctag">CV Queue Count</span><span class="ctag">IoT Sensors</span><span class="ctag">500ms refresh</span>
+          </div>
+        </div>
+
+        <!-- Sensor Network -->
+        <div class="feature-card card-wide">
+          <div class="card-glow glow-green"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-green">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 2V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 19V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4.93 4.93L7.05 7.05" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16.95 16.95L19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4.93 19.07L7.05 16.95" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16.95 7.05L19.07 4.93" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Sensor Network Overview</h3>
+            <div class="live-chip green-chip">● 847 Active</div>
+          </div>
+          <div class="sensor-grid">
+            <div class="sensor-stat">
+              <div class="ss-icon">📷</div>
+              <div class="ss-num" id="cam-count">312</div>
+              <div class="ss-label">CV Cameras</div>
+              <div class="ss-status ok">All Online</div>
+            </div>
+            <div class="sensor-stat">
+              <div class="ss-icon">📡</div>
+              <div class="ss-num" id="iot-count">280</div>
+              <div class="ss-label">IoT Nodes</div>
+              <div class="ss-status ok">Active</div>
+            </div>
+            <div class="sensor-stat">
+              <div class="ss-icon">🔵</div>
+              <div class="ss-num" id="ble-count">180</div>
+              <div class="ss-label">BLE Beacons</div>
+              <div class="ss-status ok">Synced</div>
+            </div>
+            <div class="sensor-stat">
+              <div class="ss-icon">⚖️</div>
+              <div class="ss-num">75</div>
+              <div class="ss-label">Floor Pressure</div>
+              <div class="ss-status warn">3 Degraded</div>
+            </div>
+          </div>
+          <div class="sensor-activity" id="sensor-activity">
+            <div class="sa-label">Sensor Activity Stream</div>
+            <div class="sa-feed" id="sa-feed">
+              <div class="sa-item"><span class="sa-time">22:17:41</span><span class="sa-type cam">CAM</span><span class="sa-msg">Zone C density: 78 persons/m²</span></div>
+              <div class="sa-item"><span class="sa-time">22:17:40</span><span class="sa-type iot">IoT</span><span class="sa-msg">Gate B3 pressure: 120kg avg — queue forming</span></div>
+              <div class="sa-item"><span class="sa-time">22:17:39</span><span class="sa-type ble">BLE</span><span class="sa-msg">Beacon NW-04 detected 847 devices in range</span></div>
+              <div class="sa-item"><span class="sa-time">22:17:38</span><span class="sa-type cam">CAM</span><span class="sa-msg">Restroom C2: queue exceeds 45 persons — alert triggered</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== LAYER 3: VENUE OPERATIONS ========================== -->
+  <section id="operations" class="layer-section layer-ops-section">
+    <div class="section-inner">
+      <div class="layer-header">
+        <div class="layer-tag tag-ops">3 · Venue Operations</div>
+        <h2 class="section-title">Staff, Infrastructure <span class="gradient-text-green">&amp; Smart Gates</span></h2>
+        <p class="section-sub">Automated command over stadium infrastructure — from live staff deployment mapping to dynamic pricing responses at concessions.</p>
+      </div>
+
+      <div class="ops-grid">
+        <!-- Staff Dashboard -->
+        <div class="feature-card card-wide">
+          <div class="card-glow glow-green"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-green">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M2 21v-2a4 4 0 014-4h6a4 4 0 014 4v2" stroke="currentColor" stroke-width="2"/><circle cx="19" cy="7" r="3" stroke="currentColor" stroke-width="2"/><path d="M22 14v-1a3 3 0 00-3-3h-1" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3>Staff Deployment Dashboard</h3>
+          </div>
+          <div class="staff-dashboard">
+            <div class="staff-map" id="staff-map">
+              <div class="sm-label">Live Stadium Deployment Map</div>
+              <!-- Stadium shape SVG -->
+              <svg width="100%" height="200" viewBox="0 0 400 200" class="stadium-svg">
+                <ellipse cx="200" cy="100" rx="185" ry="88" fill="none" stroke="#1e293b" stroke-width="2"/>
+                <ellipse cx="200" cy="100" rx="140" ry="62" fill="#0f1629" stroke="#1e293b" stroke-width="1.5"/>
+                <ellipse cx="200" cy="100" rx="90" ry="38" fill="#162032" stroke="#1e293b" stroke-width="1"/>
+                <!-- Field -->
+                <ellipse cx="200" cy="100" rx="70" ry="28" fill="#0d2d0d" stroke="#15803d" stroke-width="1.5"/>
+                <!-- Staff dots - animated -->
+                <circle cx="50" cy="100" r="5" class="staff-dot security" id="sd1"/>
+                <circle cx="80" cy="55" r="5" class="staff-dot security" id="sd2"/>
+                <circle cx="80" cy="145" r="5" class="staff-dot security" id="sd3"/>
+                <circle cx="155" cy="30" r="5" class="staff-dot steward" id="sd4"/>
+                <circle cx="245" cy="30" r="5" class="staff-dot steward" id="sd5"/>
+                <circle cx="320" cy="55" r="5" class="staff-dot medical" id="sd6"/>
+                <circle cx="350" cy="100" r="5" class="staff-dot security" id="sd7"/>
+                <circle cx="320" cy="145" r="5" class="staff-dot steward" id="sd8"/>
+                <circle cx="155" cy="170" r="5" class="staff-dot medical" id="sd9"/>
+                <circle cx="245" cy="170" r="5" class="staff-dot security" id="sd10"/>
+                <circle cx="200" cy="62" r="5" class="staff-dot concession" id="sd11"/>
+                <circle cx="200" cy="138" r="5" class="staff-dot concession" id="sd12"/>
+                <circle cx="140" cy="100" r="5" class="staff-dot concession" id="sd13"/>
+                <circle cx="260" cy="100" r="5" class="staff-dot concession" id="sd14"/>
+                <!-- Incident marker -->
+                <circle cx="320" cy="55" r="12" class="incident-ring" id="incident-ring"/>
+                <text x="320" y="59" text-anchor="middle" font-size="10" fill="#fbbf24">⚠</text>
+              </svg>
+              <div class="staff-legend">
+                <span class="sl-item"><span class="sl-dot security"></span>Security</span>
+                <span class="sl-item"><span class="sl-dot steward"></span>Steward</span>
+                <span class="sl-item"><span class="sl-dot medical"></span>Medical</span>
+                <span class="sl-item"><span class="sl-dot concession"></span>Concession</span>
+              </div>
+            </div>
+            <div class="staff-stats">
+              <div class="ss2-card">
+                <div class="ss2-num">124</div>
+                <div class="ss2-label">Total Deployed</div>
+              </div>
+              <div class="ss2-card">
+                <div class="ss2-num warn-text">2</div>
+                <div class="ss2-label">Active Incidents</div>
+              </div>
+              <div class="ss2-card">
+                <div class="ss2-num">18</div>
+                <div class="ss2-label">On Standby</div>
+              </div>
+              <div class="incident-feed">
+                <div class="if-header">🚨 Incident Log</div>
+                <div class="if-item">
+                  <div class="if-dot warn"></div>
+                  <div class="if-text"><strong>Overcrowding</strong> — Gate NE, Sec B2<br/><small>Escalated to Security Lead · 22:14</small></div>
+                </div>
+                <div class="if-item">
+                  <div class="if-dot info"></div>
+                  <div class="if-text"><strong>Medical Assist</strong> — Concourse A<br/><small>Resolved · 22:09</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concession Management -->
+        <div class="feature-card">
+          <div class="card-glow glow-amber"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-amber">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.4 5.1 16.4H17M17 16.4C16.4 16.4 16 16.8 16 17.4S16.4 18.4 17 18.4 18 18 18 17.4 17.6 16.4 17 16.4ZM9 17.4C9 18 8.6 18.4 8 18.4S7 18 7 17.4 7.4 16.4 8 16.4 9 16.8 9 17.4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Concession Management</h3>
+          </div>
+          <p class="feature-desc">Dynamic pricing, low inventory alerts, and demand forecasting for every concession stand.</p>
+          <div class="concession-demo">
+            <div class="pricing-table">
+              <div class="pt-header">
+                <span>Item</span><span>Price</span><span>Stock</span><span>Status</span>
+              </div>
+              <div class="pt-row">
+                <span>🍔 Burger</span>
+                <span class="price-dynamic">$12 <span class="price-up">▲</span></span>
+                <div class="stock-bar-mini"><div class="sbm-fill sbm-high" style="width:72%"></div></div>
+                <span class="status-badge sb-ok">Good</span>
+              </div>
+              <div class="pt-row">
+                <span>🍕 Pizza</span>
+                <span class="price-dynamic">$10</span>
+                <div class="stock-bar-mini"><div class="sbm-fill sbm-med" style="width:38%"></div></div>
+                <span class="status-badge sb-warn">Low</span>
+              </div>
+              <div class="pt-row">
+                <span>🥤 Soda</span>
+                <span class="price-dynamic">$5 <span class="price-down">▼</span></span>
+                <div class="stock-bar-mini"><div class="sbm-fill sbm-high" style="width:90%"></div></div>
+                <span class="status-badge sb-ok">Good</span>
+              </div>
+              <div class="pt-row alert-row">
+                <span>🍟 Fries</span>
+                <span class="price-dynamic">$7 <span class="price-up">▲</span></span>
+                <div class="stock-bar-mini"><div class="sbm-fill sbm-low" style="width:8%"></div></div>
+                <span class="status-badge sb-crit">Critical</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="ctag">Dynamic Pricing</span><span class="ctag">Inventory AI</span><span class="ctag">Demand Forecast</span>
+          </div>
+        </div>
+
+        <!-- Smart Access Gates -->
+        <div class="feature-card">
+          <div class="card-glow glow-cyan"></div>
+          <div class="feature-card-header">
+            <div class="feature-icon icon-cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <h3>Smart Access Gates</h3>
+          </div>
+          <p class="feature-desc">Lane balancing algorithms redistribute entry flow based on real-time density per section.</p>
+          <div class="gates-demo">
+            <div class="lanes-visual">
+              <div class="lane-group">
+                <div class="lane-label">North Wing</div>
+                <div class="lanes">
+                  <div class="lane" id="lane-n1">
+                    <div class="lane-pipe">
+                      <div class="lane-fill" style="height:85%"></div>
+                    </div>
+                    <div class="lane-status open">●</div>
+                    <div class="lane-name">A1</div>
+                  </div>
+                  <div class="lane" id="lane-n2">
+                    <div class="lane-pipe">
+                      <div class="lane-fill" style="height:75%"></div>
+                    </div>
+                    <div class="lane-status open">●</div>
+                    <div class="lane-name">A2</div>
+                  </div>
+                  <div class="lane" id="lane-n3">
+                    <div class="lane-pipe">
+                      <div class="lane-fill lf-crit" style="height:95%"></div>
+                    </div>
+                    <div class="lane-status crit">⚠</div>
+                    <div class="lane-name">A3</div>
+                  </div>
+                </div>
+              </div>
+              <div class="lane-group">
+                <div class="lane-label">South Wing</div>
+                <div class="lanes">
+                  <div class="lane" id="lane-s1">
+                    <div class="lane-pipe">
+                      <div class="lane-fill" style="height:20%"></div>
+                    </div>
+                    <div class="lane-status open">●</div>
+                    <div class="lane-name">B1</div>
+                  </div>
+                  <div class="lane" id="lane-s2">
+                    <div class="lane-pipe">
+                      <div class="lane-fill" style="height:35%"></div>
+                    </div>
+                    <div class="lane-status open">●</div>
+                    <div class="lane-name">B2</div>
+                  </div>
+                  <div class="lane" id="lane-s3">
+                    <div class="lane-pipe">
+                      <div class="lane-fill" style="height:15%"></div>
+                    </div>
+                    <div class="lane-status open">●</div>
+                    <div class="lane-name">B3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="gate-ai-action" id="gate-ai-msg">
+              <div class="ai-action-icon">🤖</div>
+              <div class="ai-action-text">AI rebalancing: redirecting Gate A3 overflow → B1 & B2. Estimated equalization: <strong>2.1 min</strong></div>
+            </div>
+          </div>
+          <div class="card-tags">
+            <span class="ctag">Auto Lane Balance</span><span class="ctag">AI Access Control</span><span class="ctag">CCTV Integration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== LAYER 4: REAL-TIME COORDINATION ========================== -->
+  <section id="coordination" class="layer-section layer-coord-section">
+    <div class="section-inner">
+      <div class="layer-header">
+        <div class="layer-tag tag-coord">4 · Command Core</div>
+        <h2 class="section-title">The Central Brain Tying<br/><span class="gradient-text-amber">All Layers Together</span></h2>
+        <p class="section-sub">Every sensor pulse, staff action, and fan tap flows into a unified engine — processed, routed, and acted upon in milliseconds.</p>
+      </div>
+
+      <!-- Live Dashboard -->
+      <div class="coord-dashboard">
+        <div class="dashboard-header">
+          <div class="dh-left">
+            <div class="dh-title">Unified Command Center</div>
+            <div class="dh-sub">All 4 layers · 22:17:42 UTC+5:30</div>
+          </div>
+          <div class="dh-indicators">
+            <div class="dh-indicator online">
+              <span class="di-dot"></span>All Systems Nominal
+            </div>
+            <div class="dh-indicator warn">
+              <span class="di-dot"></span>2 Alerts Active
+            </div>
+          </div>
+        </div>
+
+        <div class="coord-grid">
+          <!-- Unified Data Platform -->
+          <div class="coord-card span-2">
+            <div class="cc-header">
+              <div class="cc-icon">🔗</div>
+              <h3>Unified Data Platform</h3>
+              <div class="live-chip">● Live Feed</div>
+            </div>
+            <div class="api-streams">
+              <div class="stream-visual" id="api-stream-visual">
+                <div class="stream-sources">
+                  <div class="ss-source src-1">Cameras<br/><small>312 feeds</small></div>
+                  <div class="ss-source src-2">IoT<br/><small>280 nodes</small></div>
+                  <div class="ss-source src-3">Mobile<br/><small>48K users</small></div>
+                  <div class="ss-source src-4">Gates<br/><small>24 lanes</small></div>
+                  <div class="ss-source src-5">Staff<br/><small>124 units</small></div>
+                </div>
+                <div class="stream-pipeline">
+                  <div class="pipeline-line"></div>
+                  <div class="pipeline-core">
+                    <div class="core-icon">⚡</div>
+                    <div class="core-label">API Core<br/><small>8ms latency</small></div>
+                  </div>
+                  <div class="pipeline-line"></div>
+                </div>
+                <div class="stream-outputs">
+                  <div class="ss-output out-1">ML Engine</div>
+                  <div class="ss-output out-2">Staff Cmd</div>
+                  <div class="ss-output out-3">Fan App</div>
+                  <div class="ss-output out-4">Analytics</div>
+                </div>
+              </div>
+              <div class="throughput-stats">
+                <div class="tp-item">
+                  <div class="tp-num" id="events-per-sec">12,847</div>
+                  <div class="tp-label">Events/sec</div>
+                </div>
+                <div class="tp-item">
+                  <div class="tp-num">8ms</div>
+                  <div class="tp-label">P99 Latency</div>
+                </div>
+                <div class="tp-item">
+                  <div class="tp-num">99.97%</div>
+                  <div class="tp-label">Uptime</div>
+                </div>
+                <div class="tp-item">
+                  <div class="tp-num" id="data-gb">2.4TB</div>
+                  <div class="tp-label">Ingested Today</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency Broadcast -->
+          <div class="coord-card">
+            <div class="cc-header">
+              <div class="cc-icon">📢</div>
+              <h3>Emergency Broadcast</h3>
+            </div>
+            <div class="broadcast-demo">
+              <div class="broadcast-channels">
+                <div class="bc-item bc-active">
+                  <div class="bc-icon">📱</div>
+                  <div class="bc-name">Fan App</div>
+                  <div class="bc-status sent">Sent</div>
+                </div>
+                <div class="bc-item bc-active">
+                  <div class="bc-icon">📺</div>
+                  <div class="bc-name">Stadium Screens</div>
+                  <div class="bc-status sent">Sent</div>
+                </div>
+                <div class="bc-item bc-active">
+                  <div class="bc-icon">🔊</div>
+                  <div class="bc-name">PA System</div>
+                  <div class="bc-status sent">Sent</div>
+                </div>
+                <div class="bc-item">
+                  <div class="bc-icon">📟</div>
+                  <div class="bc-name">Staff Radio</div>
+                  <div class="bc-status pending">Transmitting</div>
+                </div>
+              </div>
+              <div class="broadcast-compose">
+                <div class="bc-alert-card">
+                  <div class="bca-type emergency">🚨 CROWD ALERT</div>
+                  <div class="bca-msg">"North Stand reaching capacity. Please use alternate exits E and F. Staff are assisting."</div>
+                  <div class="bca-meta">Issued: 22:14:32 · Zone: North · Priority: HIGH</div>
+                </div>
+              </div>
+              <div class="broadcast-stats">
+                <div class="bs-item"><span>Delivered</span><strong>47,832</strong></div>
+                <div class="bs-item"><span>Read</span><strong>38,291</strong></div>
+                <div class="bs-item"><span>Acted</span><strong>12,044</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analytics Engine -->
+          <div class="coord-card">
+            <div class="cc-header">
+              <div class="cc-icon">📊</div>
+              <h3>Analytics Engine</h3>
+            </div>
+            <div class="analytics-tabs">
+              <button class="a-tab active" data-view="attendance">Capacity</button>
+              <button class="a-tab" data-view="revenue">Revenue</button>
+              <button class="a-tab" data-view="efficiency">Efficiency</button>
+            </div>
+            <div class="analytics-main">
+              <div class="chart-box active" id="chart-attendance">
+                <div class="chart-container">
+                  <canvas id="attendance-chart"></canvas>
+                </div>
+                <div class="chart-meta">
+                  <span>Target: 80,000</span>
+                  <span class="trend-up">▲ 4.2% demand spike predicted</span>
+                </div>
+              </div>
+              <div class="chart-box" id="chart-revenue">
+                <div class="chart-container">
+                  <canvas id="revenue-chart"></canvas>
+                </div>
+                <div class="chart-meta">
+                  <span>Today's Projection: $2.4M</span>
+                </div>
+              </div>
+              <div class="chart-box" id="chart-efficiency">
+                <div class="chart-container">
+                  <canvas id="efficiency-chart"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="ai-insight-strip">
+              <div class="ais-icon">🤖</div>
+              <div class="ais-text"><strong>AI Forecast:</strong> Surge expected at Gate B3 in 12 mins. Recommend activating 2 additional stewards.</div>
+            </div>
+
+            <div class="post-event-insights">
+              <div class="pei-header">Advanced Intelligence Metrics</div>
+              <div class="pei-grid">
+                <div class="pei-card">
+                  <div class="pei-label">Wait Time Variance</div>
+                  <div class="pei-val">±14s</div>
+                  <div class="pei-status good">Stable</div>
+                </div>
+                <div class="pei-card">
+                  <div class="pei-label">Sentiment Analysis</div>
+                  <div class="pei-val">Positive (0.84)</div>
+                  <div class="pei-status excellent">High Engagement</div>
+                </div>
+                <div class="pei-card">
+                  <div class="pei-label">Energy Efficiency</div>
+                  <div class="pei-val">-18% Usage</div>
+                  <div class="pei-status good">Optimized</div>
+                </div>
+                <div class="pei-card">
+                  <div class="pei-label">Predicted NPS</div>
+                  <div class="pei-val">84</div>
+                  <div class="pei-status excellent">+2 vs Last Event</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Health -->
+          <div class="coord-card span-2">
+            <div class="cc-header">
+              <div class="cc-icon">💚</div>
+              <h3>System Health — All Layers</h3>
+            </div>
+            <div class="health-grid">
+              <div class="health-item">
+                <div class="health-layer">L1 Attendee</div>
+                <div class="health-bar-wrap"><div class="health-bar hb-l1" style="width:99%"></div></div>
+                <div class="health-percent">99%</div>
+                <div class="health-state ok">Nominal</div>
+              </div>
+              <div class="health-item">
+                <div class="health-layer">L2 Intelligence</div>
+                <div class="health-bar-wrap"><div class="health-bar hb-l2" style="width:97%"></div></div>
+                <div class="health-percent">97%</div>
+                <div class="health-state ok">Nominal</div>
+              </div>
+              <div class="health-item">
+                <div class="health-layer">L3 Operations</div>
+                <div class="health-bar-wrap"><div class="health-bar hb-l3" style="width:94%"></div></div>
+                <div class="health-percent">94%</div>
+                <div class="health-state warn">1 Incident</div>
+              </div>
+              <div class="health-item">
+                <div class="health-layer">L4 Coordination</div>
+                <div class="health-bar-wrap"><div class="health-bar hb-l4" style="width:100%"></div></div>
+                <div class="health-percent">100%</div>
+                <div class="health-state ok">Nominal</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Decision Log (full-width) -->
+          <div class="coord-card span-3" id="ai-decision-log">
+            <div class="cc-header">
+              <div class="cc-icon">🧠</div>
+              <h3>AI Decision Log — Live Actions</h3>
+              <div class="live-chip">● Auto-executing</div>
+            </div>
+            <div class="adl-grid">
+              <div class="adl-feed" id="adl-feed" aria-live="polite" aria-label="Live AI decision feed">
+                <div class="adl-item adl-route">
+                  <span class="adl-layer l1-tag">L1</span>
+                  <span class="adl-action">Reroute fan #48291 via alternate path — Gate A3 surge detected</span>
+                  <span class="adl-conf">97.3%</span>
+                  <span class="adl-time">just now</span>
+                </div>
+                <div class="adl-item adl-staff">
+                  <span class="adl-layer l3-tag">L3</span>
+                  <span class="adl-action">Deploy 2 stewards to Gate NE — predicted queue overflow in 4 min</span>
+                  <span class="adl-conf">91.8%</span>
+                  <span class="adl-time">12s ago</span>
+                </div>
+                <div class="adl-item adl-price">
+                  <span class="adl-layer l3-tag">L3</span>
+                  <span class="adl-action">Dynamic price drop: Fries $7→$5 at Stand D7 — low traffic, high stock</span>
+                  <span class="adl-conf">88.4%</span>
+                  <span class="adl-time">28s ago</span>
+                </div>
+                <div class="adl-item adl-alert">
+                  <span class="adl-layer l2-tag">L2</span>
+                  <span class="adl-action">Crowd surge alert suppressed — density self-corrected via passive routing</span>
+                  <span class="adl-conf">94.1%</span>
+                  <span class="adl-time">45s ago</span>
+                </div>
+                <div class="adl-item adl-route">
+                  <span class="adl-layer l4-tag">L4</span>
+                  <span class="adl-action">Cross-layer sync: L2 heatmap updated L3 staff positions · 14 units reallocated</span>
+                  <span class="adl-conf">99.2%</span>
+                  <span class="adl-time">1m ago</span>
+                </div>
+              </div>
+              <div class="adl-summary">
+                <div class="adls-item">
+                  <div class="adls-num" id="adl-total">1,847</div>
+                  <div class="adls-label">AI Decisions Today</div>
+                </div>
+                <div class="adls-item">
+                  <div class="adls-num green-text">96.2%</div>
+                  <div class="adls-label">Avg Confidence</div>
+                </div>
+                <div class="adls-item">
+                  <div class="adls-num" id="adl-auto">1,791</div>
+                  <div class="adls-label">Auto-Executed</div>
+                </div>
+                <div class="adls-item">
+                  <div class="adls-num amber-text">56</div>
+                  <div class="adls-label">Human Override</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main><!-- /#main-content -->
+
+  <!-- Footer -->
+  <footer id="site-footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-inner footer-centered">
+      <div class="footer-brand footer-brand--center">
+          <div class="logo footer-logo">
+            <div class="logo-icon">
+              <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="13" stroke="url(#footerGrad)" stroke-width="2"/>
+                <path d="M14 4 L20 10 L20 18 L14 24 L8 18 L8 10 Z" fill="url(#footerGrad)" opacity="0.8"/>
+                <circle cx="14" cy="14" r="3" fill="white"/>
+                <defs>
+                  <linearGradient id="footerGrad" x1="0" y1="0" x2="28" y2="28">
+                    <stop offset="0%" stop-color="#00d4ff"/>
+                    <stop offset="100%" stop-color="#7c3aed"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="logo-text">Stadium<span class="logo-accent">Go</span></span>
+          </div>
+          <p class="footer-desc">The intelligent operating system for modern stadiums. Harness real-time data to create seamless, safe, and wildly profitable fan experiences.</p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/ritamdas/" class="social-icon" aria-label="Ritam Das on LinkedIn" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://github.com/Rit7439/StadiumGo" class="social-icon" aria-label="StadiumGo on GitHub" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.5 20.25 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-creator">
+          <span class="fc-label">Designed &amp; Built by</span>
+          <span class="fc-name gradient-text">Ritam Das</span>
+        </div>
+
+      </div>
+
+
+
+
+
+      <div class="footer-bottom footer-bottom--center">
+        <div class="fb-copy">&copy; 2026 Ritam Das. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ Core Libraries (defer for performance) ═══ -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js" defer></script>
+
+  <!-- ═══ Enhancement Libraries ═══ -->
+  <!-- Typed.js: typewriter effect for hero headline -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js" defer></script>
+  <!-- VanillaTilt: 3D tilt on feature cards -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
+
+  <!-- ═══ App (defer, runs after all libraries load) ═══ -->
+  <script src="app.js" defer></script>
+</body>
+</html>
