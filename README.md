@@ -2,13 +2,13 @@
 
 > **AI-Powered Smart Stadium Experience System**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Cloud%20Run-4285F4?style=for-the-badge&logo=google-cloud)](https://stadiumgo-776914828699.asia-south1.run.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Cloud%20Run-4285F4?style=for-the-badge&logo=google-cloud)](https://stadiumgo-776914828699.us-central1.run.app/)
 
 A premium, interactive single-page application demonstrating a four-layer smart stadium operating system. Built with modern web technologies and deployed on Google Cloud Run.
 
 ## 🌐 Live Demo
 
-**[https://stadiumgo-776914828699.asia-south1.run.app/](https://stadiumgo-776914828699.asia-south1.run.app/)**
+**[https://stadiumgo-776914828699.us-central1.run.app/](https://stadiumgo-776914828699.us-central1.run.app/)**
 
 ## ✨ Features
 
