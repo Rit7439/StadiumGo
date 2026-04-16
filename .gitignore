@@ -1,0 +1,15 @@
+# Dependencies — never commit these
+node_modules/
+package-lock.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
