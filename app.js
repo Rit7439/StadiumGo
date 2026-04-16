@@ -48,10 +48,34 @@ function initNav() {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const section = link.dataset.section;
+      // Close mobile menu before scrolling
+      hamburger.classList.remove('open');
+      navLinksEl.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
       scrollToSection(section);
     });
   });
+
+  // ── Hamburger toggle ────────────────────────────────────────────
+  const hamburger   = document.getElementById('nav-hamburger');
+  const navLinksEl  = document.getElementById('nav-links-list');
+  if (hamburger && navLinksEl) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      navLinksEl.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+    // Close on scroll
+    window.addEventListener('scroll', () => {
+      if (hamburger.classList.contains('open')) {
+        hamburger.classList.remove('open');
+        navLinksEl.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    }, { passive: true });
+  }
 }
+
 
 function scrollToSection(id) {
   const el = document.getElementById(id);
@@ -964,6 +988,149 @@ function initVanillaTilt() {
       perspective: 1200,
       reset: true,      // resets on mouse leave
     });
+  }
+}
+
+/* ====================  GOOGLE MAPS VENUE MAP  ====================
+ *
+ * Primary: Google Maps JavaScript API (dark-styled, interactive markers,
+ *          directions service, GA4 events on interactions).
+ * Fallback: If the JS API key is unauthorised for the current domain,
+ *           window.gm_authFailure fires and we swap in a free embedded
+ *           iframe so the section always renders a real Google Map.
+ * ================================================================== */
+
+// Venue marker data for Chinnaswamy Stadium, Bengaluru
+const STADIUM_CENTER = { lat: 12.97916, lng: 77.59946 };
+
+const venueMarkers = [
+  { id: 'gate-a',  label: 'Gate A — Main Entry',   lat: 12.97950, lng: 77.59900, color: '#00d4ff',  type: 'gate'    },
+  { id: 'gate-b',  label: 'Gate B — North Entry',  lat: 12.98000, lng: 77.59946, color: '#00d4ff',  type: 'gate'    },
+  { id: 'food',    label: 'Food Court — Level 2',  lat: 12.97930, lng: 77.60010, color: '#f59e0b',  type: 'food'    },
+  { id: 'medical', label: 'Medical Center',         lat: 12.97880, lng: 77.59980, color: '#10b981',  type: 'medical' },
+  { id: 'parking', label: 'Parking Zone P1',        lat: 12.97820, lng: 77.59900, color: '#7c3aed',  type: 'parking' },
+];
+
+let _googleMap        = null;
+let _mapMarkers       = {};
+let _directionsService  = null;
+let _directionsRenderer = null;
+let _mapFallbackMode  = false; // true when JS API key fails
+
+/**
+ * initGoogleMap — called as Google Maps API callback.
+ * Renders an interactive dark-styled map of Chinnaswamy Stadium.
+ */
+function initGoogleMap() {
+  // The map is displayed via a permanent iframe embed in the HTML —
+  // no canvas rendering needed. We use the JS API only for:
+  //   • DirectionsService (walking routes)
+  //   • GA4 custom events (map_loaded, venue_card_click, directions_requested)
+  if (typeof google === 'undefined') return;
+
+  // Initialise DirectionsService for the "Get Directions" panel
+  _directionsService  = new google.maps.DirectionsService();
+
+  // Update ETA chip to show the map section is ready
+  const etaEl = document.getElementById('dp-eta');
+  if (etaEl) etaEl.textContent = 'Ready for directions';
+
+  // GA4 — map section active
+  if (window._gtagReady) {
+    gtag('event', 'google_map_loaded', { stadium: 'Chinnaswamy', mode: 'embed_iframe' });
+  }
+}
+
+
+/**
+ * gm_authFailure — called automatically by the Maps JS API when the key
+ * is invalid or not authorised for the current domain.
+ * Replaces the broken map container with a working embedded iframe.
+ */
+window.gm_authFailure = function () {
+  if (_mapFallbackMode) return; // already in fallback — don't run twice
+  _mapFallbackMode = true;
+  _googleMap       = null;  // prevent stale JS API calls
+
+  const container = document.getElementById('google-map-container');
+  if (!container) return;
+
+
+  // Use Google Maps Embed (free, no key) for Chinnaswamy Stadium
+  container.innerHTML = `
+    <iframe
+      id="gmap-iframe"
+      title="M. Chinnaswamy Stadium — Google Maps"
+      width="100%"
+      height="100%"
+      style="border:0;border-radius:12px;filter:grayscale(10%) brightness(0.85);"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6285!2d77.59688!3d12.97916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae167b5ce1db3b%3A0x432f3b5cadc4cd3c!2sM.%20Chinnaswamy%20Stadium!5e0!3m2!1sen!2sin!4v1713200000000!5m2!1sen!2sin">
+    </iframe>`;
+  container.style.background = 'transparent';
+
+  // Update status chip to reflect fallback
+  const chip = document.getElementById('map-status-chip');
+  if (chip) chip.textContent = '● Maps Embedded';
+
+  // Update directions panel for fallback
+  const etaEl = document.getElementById('dp-eta');
+  if (etaEl) etaEl.textContent = 'Open in Google Maps';
+  const panel = document.getElementById('directions-renderer-panel');
+  if (panel) panel.innerHTML = 'Click <strong>Get Directions</strong> to open Google Maps navigation for Chinnaswamy Stadium.';
+
+  // GA4 event — fallback mode
+  if (window._gtagReady) {
+    gtag('event', 'maps_fallback_activated', { reason: 'auth_failure' });
+  }
+};
+
+/**
+ * stadiumMapFocus — pan & zoom map to a venue marker.
+ * Exposed globally so HTML onclick handlers can call it.
+ */
+function stadiumMapFocus(markerId) {
+  // Highlight the active venue quick-info card
+  document.querySelectorAll('.venue-info-card').forEach(c => c.classList.remove('vi-active'));
+  const idMap = { 'gate-a': 'vi-gate', food: 'vi-food', medical: 'vi-medical', parking: 'vi-parking' };
+  const card = document.getElementById(idMap[markerId]);
+  if (card) card.classList.add('vi-active');
+
+  // Pan the embedded iframe to the selected venue
+  const vm = venueMarkers.find(m => m.id === markerId);
+  if (!vm) return;
+  const iframe = document.getElementById('gmap-iframe');
+  if (iframe) {
+    // Use the free embed URL centred on the venue's coordinates
+    iframe.src = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d500!2d${vm.lng}!3d${vm.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1713200000001`;
+  }
+
+  if (window._gtagReady) {
+    gtag('event', 'venue_card_click', { venue_id: markerId });
+  }
+}
+
+/**
+ * getStadiumDirections — requests walking directions to the stadium
+ * from the user-supplied origin input.
+ */
+function getStadiumDirections() {
+  const input = document.getElementById('directions-origin');
+  const etaEl  = document.getElementById('dp-eta');
+  const panel  = document.getElementById('directions-renderer-panel');
+
+  if (!input || !input.value.trim()) return;
+
+  // Always open Google Maps in a new tab for reliable directions
+  const query = encodeURIComponent(input.value.trim());
+  const dest  = encodeURIComponent('M. Chinnaswamy Stadium, Bengaluru');
+  window.open(`https://www.google.com/maps/dir/${query}/${dest}`, '_blank', 'noopener');
+  if (etaEl)  etaEl.textContent = '↗ Opened in Google Maps';
+  if (panel)  panel.innerHTML   = `Directions from <strong>${input.value.trim()}</strong> opened in Google Maps.`;
+  if (window._gtagReady) {
+    gtag('event', 'directions_requested', { origin: input.value.trim(), destination: 'Chinnaswamy Stadium' });
   }
 }
 

@@ -1,0 +1,22 @@
+{
+  "name": "stadiumgo",
+  "version": "1.0.0",
+  "description": "AI-powered Smart Stadium Experience System",
+  "private": true,
+  "scripts": {
+    "test": "jest --verbose",
+    "test:coverage": "jest --verbose --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests.js"
+    ],
+    "verbose": true
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "author": "Ritam Das",
+  "license": "MIT"
+}

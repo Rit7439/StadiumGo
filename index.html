@@ -49,6 +49,21 @@
   }
   </script>
 
+  <!-- ═══ Google Services: Analytics (GA4) ═══ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-STADIUMGO01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-STADIUMGO01', {
+      page_title: 'StadiumGo — Smart Stadium OS',
+      page_location: window.location.href,
+      send_page_view: true
+    });
+    // Track section visibility as custom GA4 events
+    window._gtagReady = true;
+  </script>
+
   <!-- ═══ Google Services: Fonts (preconnect + stylesheet) ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -85,7 +100,11 @@
         </div>
         <span class="logo-text">Stadium<span class="logo-accent">Go</span></span>
       </a>
-      <div class="nav-links" role="list">
+      <!-- Hamburger — visible only on mobile (CSS shows it at ≤768px) -->
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links-list">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links-list" role="list">
         <a href="#attendees" class="nav-link" role="listitem" data-section="attendees" aria-label="Fan UI — Layer 1">1. Fan UI</a>
         <a href="#intelligence" class="nav-link" role="listitem" data-section="intelligence" aria-label="Crowd AI — Layer 2">2. Crowd AI</a>
         <a href="#operations" class="nav-link" role="listitem" data-section="operations" aria-label="Venue Ops — Layer 3">3. Venue Ops</a>
@@ -789,6 +808,87 @@
     </div>
   </section>
 
+  <!-- ========================== GOOGLE MAPS: VENUE MAP ========================== -->
+  <section id="venue-map" class="layer-section layer-maps-section" aria-label="Stadium Venue Map">
+    <div class="section-inner">
+      <div class="layer-header">
+        <div class="layer-tag tag-maps">📍 Google Maps</div>
+        <h2 class="section-title">Interactive <span class="gradient-text-cyan">Venue Map</span></h2>
+        <p class="section-sub">Real-time stadium navigation powered by Google Maps. Locate gates, parking, medical stations, and concessions in one tap.</p>
+      </div>
+
+      <div class="maps-wrapper">
+        <!-- Google Map embed -->
+        <div class="map-card">
+          <div class="map-card-header">
+            <div class="map-card-icon">🗺️</div>
+            <h3>Chinnaswamy Stadium — Live Fan Map</h3>
+            <div class="live-chip green-chip" id="map-status-chip">● Maps Online</div>
+          </div>
+          <div id="google-map-container" role="application" aria-label="Interactive stadium venue map" style="width:100%;height:420px;border-radius:12px;overflow:hidden;border:1px solid rgba(0,212,255,0.15);">
+            <iframe
+              id="gmap-iframe"
+              title="M. Chinnaswamy Stadium — Google Maps"
+              width="100%"
+              height="100%"
+              style="border:0;border-radius:12px;"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6285!2d77.59688!3d12.97916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae167b5ce1db3b%3A0x432f3b5cadc4cd3c!2sM.%20Chinnaswamy%20Stadium!5e0!3m2!1sen!2sin!4v1713200000000!5m2!1sen!2sin">
+            </iframe>
+          </div>
+          <div class="map-legend-row">
+            <div class="ml-item"><span class="ml-dot ml-gate"></span>Entry Gates</div>
+            <div class="ml-item"><span class="ml-dot ml-food"></span>Food &amp; Drink</div>
+            <div class="ml-item"><span class="ml-dot ml-medical"></span>Medical</div>
+            <div class="ml-item"><span class="ml-dot ml-parking"></span>Parking</div>
+          </div>
+        </div>
+
+        <!-- Venue quick-info cards -->
+        <div class="venue-info-grid">
+          <div class="venue-info-card" id="vi-gate" onclick="stadiumMapFocus('gate-a')" role="button" tabindex="0" aria-label="Navigate to Gate A on map">
+            <div class="vi-icon">🚪</div>
+            <div class="vi-label">Gate A</div>
+            <div class="vi-detail">Main Entry · NW</div>
+            <div class="vi-badge vi-open">Open</div>
+          </div>
+          <div class="venue-info-card" id="vi-food" onclick="stadiumMapFocus('food')" role="button" tabindex="0" aria-label="Navigate to Food Court on map">
+            <div class="vi-icon">🍔</div>
+            <div class="vi-label">Food Court</div>
+            <div class="vi-detail">Level 2 · East</div>
+            <div class="vi-badge vi-busy">Busy</div>
+          </div>
+          <div class="venue-info-card" id="vi-medical" onclick="stadiumMapFocus('medical')" role="button" tabindex="0" aria-label="Navigate to Medical Center on map">
+            <div class="vi-icon">🏥</div>
+            <div class="vi-label">Medical</div>
+            <div class="vi-detail">Concourse A</div>
+            <div class="vi-badge vi-open">Available</div>
+          </div>
+          <div class="venue-info-card" id="vi-parking" onclick="stadiumMapFocus('parking')" role="button" tabindex="0" aria-label="Navigate to Parking Zone on map">
+            <div class="vi-icon">🅿️</div>
+            <div class="vi-label">Parking P1</div>
+            <div class="vi-detail">400m · South</div>
+            <div class="vi-badge vi-open">Space</div>
+          </div>
+        </div>
+
+        <!-- Directions panel -->
+        <div class="directions-panel" id="directions-panel">
+          <div class="dp-header">
+            <span class="dp-icon">🧭</span>
+            <span>Fan Directions</span>
+            <div class="live-chip" id="dp-eta">Computing route…</div>
+          </div>
+          <div id="directions-renderer-panel" class="dp-body">Enter your location above to get walking directions to the stadium.</div>
+          <input id="directions-origin" type="text" class="dp-input" placeholder="Your current location…" aria-label="Enter your location for directions" />
+          <button id="directions-go-btn" class="btn-primary dp-btn" onclick="getStadiumDirections()" aria-label="Get walking directions to stadium">Get Directions</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========================== LAYER 4: REAL-TIME COORDINATION ========================== -->
   <section id="coordination" class="layer-section layer-coord-section">
     <div class="section-inner">
@@ -1143,6 +1243,10 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js" defer></script>
   <!-- VanillaTilt: 3D tilt on feature cards -->
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
+
+  <!-- ═══ Google Services: Maps JavaScript API ═══ -->
+  <!-- callback=initGoogleMap initialises the map after API loads -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&libraries=places&callback=initGoogleMap" async></script>
 
   <!-- ═══ App (defer, runs after all libraries load) ═══ -->
   <script src="app.js" defer></script>

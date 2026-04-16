@@ -2744,3 +2744,194 @@ html.lenis, html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+/* ================================================================
+   HAMBURGER / MOBILE NAV  (≤ 768 px)
+   ================================================================ */
+
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: 8px;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+.nav-hamburger:hover { border-color: var(--cyan); }
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+/* Animated X when open */
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav drawer */
+@media (max-width: 768px) {
+  .nav-hamburger { display: flex; }
+  .nav-status    { display: none; }   /* hide "Live" chip — save space */
+
+  .nav-links {
+    /* Stack links in a slide-down drawer */
+    position: fixed;
+    top: 68px;
+    left: 0; right: 0;
+    background: rgba(5, 11, 24, 0.97);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 24px 24px;
+    gap: 6px;
+    z-index: 99;
+    /* Hidden by default */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .nav-links.open {
+    max-height: 320px;
+    padding-top: 16px;
+    padding-bottom: 24px;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+  .nav-link:hover, .nav-link.active {
+    background: var(--cyan-dim);
+    border-color: rgba(0,212,255,0.25);
+  }
+
+  /* Push logo to left, hamburger to right */
+  .nav-inner {
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
+
+/* ================================================================
+   PHONE-SPECIFIC LAYOUT  (≤ 480 px)
+   ================================================================ */
+@media (max-width: 480px) {
+
+  /* Nav */
+  #main-nav { padding: 0 16px; }
+
+  /* Hero */
+  #hero {
+    padding: 80px 20px 40px;
+    gap: 32px;
+    text-align: center;
+    align-items: center;
+  }
+  .hero-content { display: flex; flex-direction: column; align-items: center; }
+  .hero-subtitle { font-size: 0.95rem; max-width: 100%; }
+  .hero-cta { justify-content: center; gap: 12px; }
+
+  /* Make ghost button more visible on phone */
+  .btn-ghost {
+    border-color: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* Stats row — 2×2 grid on phones */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 24px;
+    width: 100%;
+    max-width: 320px;
+  }
+  .stat-divider { display: none; }
+  .stat-card { align-items: center; }
+  .stat-number { font-size: 1.8rem; }
+
+  /* Globe — hide on very small screens to save space */
+  .hero-visual { display: none; }
+
+  /* Sections */
+  .section-inner { padding: 48px 20px; }
+  .section-title { font-size: clamp(1.5rem, 7vw, 2rem); letter-spacing: -0.5px; }
+  .section-sub   { font-size: 0.9rem; margin-bottom: 36px; }
+
+  /* Architecture cards — single column, no min-width */
+  .arch-layer { min-width: unset; width: 100%; }
+
+  /* Feature cards */
+  .feature-card { padding: 24px 20px; }
+  .feature-grid,
+  .intel-grid,
+  .ops-grid     { grid-template-columns: 1fr; gap: 16px; }
+  .card-wide,
+  .card-full    { grid-column: span 1; }
+  .card-full .alerts-demo { flex-direction: column; }
+
+  /* Queue grid — 2 cols on phone */
+  .queue-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .qc-wait    { font-size: 1.3rem; }
+
+  /* Sensor grid — 2 cols */
+  .sensor-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Staff dashboard */
+  .staff-dashboard { grid-template-columns: 1fr; gap: 16px; }
+  .staff-stats     { grid-template-columns: repeat(3, 1fr); }
+
+  /* Google Maps venue section */
+  #google-map-container { height: 300px !important; }
+  .maps-wrapper { gap: 16px; }
+  .venue-info-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .venue-info-card { padding: 14px 12px; }
+  .vi-icon  { font-size: 1.4rem; }
+  .vi-label { font-size: 0.8rem; }
+  .vi-detail{ font-size: 0.7rem; }
+  .map-legend-row { flex-wrap: wrap; gap: 8px; }
+
+  /* Directions panel */
+  .directions-panel { padding: 16px; }
+  .dp-input         { font-size: 0.9rem; padding: 10px 14px; }
+  .dp-btn           { width: 100%; justify-content: center; }
+
+  /* Coordination / command core */
+  .coord-dashboard  { margin-top: 24px; }
+  .dashboard-header { flex-direction: column; gap: 12px; }
+  .dh-indicators    { flex-direction: column; gap: 6px; }
+  .coord-grid       { grid-template-columns: 1fr; gap: 16px; }
+  .coord-card.span-2,
+  .coord-card.span-3 { grid-column: span 1; }
+  .coord-card       { padding: 20px 16px; }
+  .throughput-stats { grid-template-columns: repeat(2, 1fr); }
+  .adl-grid         { grid-template-columns: 1fr; }
+  .adl-summary      { grid-template-columns: repeat(2, 1fr); }
+  .stream-visual    { flex-direction: column; gap: 16px; }
+  .stream-sources,
+  .stream-outputs   { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .pipeline-core    { width: 100%; }
+
+  /* Analytics tabs */
+  .analytics-tabs { gap: 6px; }
+  .a-tab          { font-size: 0.75rem; padding: 6px 10px; }
+
+  /* Footer */
+  .footer-inner   { padding: 40px 20px 24px; }
+  .footer-creator { padding: 8px 16px; }
+}
+
